@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Bengalis">
+  <rect width="128" height="128" rx="28" fill="#f7ede6"/>
+  <path d="M26 94V34h28c18 0 29 8 29 21 0 8-5 14-12 17 11 3 18 10 18 21 0 15-13 24-33 24H26zm17-36h10c9 0 14-4 14-11 0-7-5-10-14-10H43v21zm0 23h13c11 0 17-4 17-12 0-8-6-12-17-12H43v24z" fill="#af7b34"/>
+  <path d="M82 28c8 3 13 7 17 14" fill="none" stroke="#f04a1d" stroke-width="4" stroke-linecap="round"/>
+</svg>

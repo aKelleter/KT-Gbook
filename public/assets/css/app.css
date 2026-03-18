@@ -1,0 +1,387 @@
+:root {
+    --app-bg: #e9ddd4;
+    --app-surface: #f3e7dd;
+    --app-card: #f7ede6;
+    --app-text: #2b1f1b;
+    --app-muted: #7a6459;
+    --app-border: rgba(120, 80, 60, 0.18);
+
+    --app-gold: #af7b34;
+    --app-gold-soft: rgba(175, 123, 52, 0.12);
+    --app-coral: #f04a1d;
+    --app-coral-soft: rgba(240, 74, 29, 0.12);
+    --app-shadow: 0 14px 30px rgba(74, 42, 28, 0.14);
+
+    --app-header-height: 82px;
+    --app-footer-height: 58px;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body.app-body {
+    min-height: 100vh;
+    color: var(--app-text);
+    background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.38), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(175,123,52,0.08), transparent 18%),
+        var(--app-bg);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app-shell {
+    min-height: 100vh;
+}
+
+.app-main {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-top: calc(var(--app-header-height) + 1.5rem) !important;
+    padding-bottom: calc(var(--app-footer-height) + 1.5rem) !important;
+}
+
+.app-navbar-fixed {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 1030;
+}
+
+.app-navbar {
+    min-height: var(--app-header-height);
+    background: rgba(243, 231, 221, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--app-border);
+}
+
+.app-brand {
+    color: var(--app-gold) !important;
+    text-decoration: none;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.app-brand-kicker {
+    font-size: 0.72rem;
+    color: var(--app-coral);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.app-logo {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 auto;
+}
+
+.app-user-email,
+.app-muted {
+    color: var(--app-muted);
+}
+
+.app-footer {
+    position: fixed;
+    inset: auto 0 0 0;
+    min-height: var(--app-footer-height);
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--app-border);
+    background: rgba(243, 231, 221, 0.9);
+    color: var(--app-muted);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.app-card,
+.hero-card,
+.royal-card,
+.stat-card {
+    background: var(--app-card);
+    border: 1px solid var(--app-border);
+    border-radius: 22px;
+}
+
+.shadow-soft {
+    box-shadow: var(--app-shadow);
+}
+
+.hero-card {
+    padding: 2rem;
+}
+
+.hero-kicker {
+    display: inline-block;
+    margin-bottom: 0.7rem;
+    color: var(--app-coral);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+}
+
+.hero-title,
+.app-title,
+.app-section-title {
+    color: var(--app-gold);
+    letter-spacing: -0.02em;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.hero-text {
+    max-width: 60ch;
+    color: var(--app-text);
+    font-size: 1.04rem;
+}
+
+.royal-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 240px;
+    background: linear-gradient(180deg, rgba(175,123,52,0.05), rgba(255,255,255,0.15)), var(--app-card);
+}
+
+.royal-card-mark {
+    position: absolute;
+    inset: 0 auto auto 1.25rem;
+    font-size: 7rem;
+    line-height: 1;
+    color: rgba(175, 123, 52, 0.2);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.royal-card-body {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 1.5rem 1.5rem 6rem;
+}
+
+.royal-card-top {
+    color: var(--app-coral);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.royal-card-main {
+    color: var(--app-gold);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.btn-bengalis {
+    background: var(--app-coral-soft);
+    color: var(--app-coral);
+    border: 1px solid rgba(240, 74, 29, 0.24);
+    border-radius: 999px;
+    padding: 0.72rem 1.1rem;
+    font-weight: 700;
+}
+
+.btn-bengalis:hover,
+.btn-bengalis:focus {
+    background: rgba(240, 74, 29, 0.18);
+    color: #c43812;
+    border-color: rgba(240, 74, 29, 0.4);
+}
+
+.btn-outline-bengalis {
+    background: rgba(255,255,255,0.55);
+    color: var(--app-gold);
+    border: 1px solid rgba(175, 123, 52, 0.32);
+    border-radius: 999px;
+    padding: 0.72rem 1.1rem;
+    font-weight: 700;
+}
+
+.btn-outline-bengalis:hover,
+.btn-outline-bengalis:focus {
+    background: var(--app-gold-soft);
+    color: #8d5f23;
+    border-color: rgba(175, 123, 52, 0.48);
+}
+
+.app-label {
+    font-weight: 600;
+    color: var(--app-text);
+}
+
+.app-input {
+    border-radius: 16px;
+    border: 1px solid var(--app-border);
+    background: rgba(255,255,255,0.75);
+    color: var(--app-text);
+    padding: 0.85rem 1rem;
+}
+
+.app-input:focus {
+    border-color: rgba(175, 123, 52, 0.45);
+    box-shadow: 0 0 0 0.25rem rgba(175, 123, 52, 0.12);
+}
+
+.app-textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+.form-card {
+    top: calc(var(--app-header-height) + 1rem);
+}
+
+.guestbook-entry {
+    padding: 1.15rem 1.15rem 1rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(120, 80, 60, 0.12);
+}
+
+.guestbook-entry.is-featured {
+    border-color: rgba(175, 123, 52, 0.38);
+    box-shadow: inset 0 0 0 1px rgba(175, 123, 52, 0.1);
+}
+
+.guestbook-message {
+    white-space: pre-line;
+    line-height: 1.65;
+}
+
+.badge-featured {
+    background: var(--app-gold-soft);
+    color: var(--app-gold);
+    border: 1px solid rgba(175, 123, 52, 0.25);
+}
+
+.stat-card .card-body {
+    padding: 1.4rem;
+}
+
+.stat-label {
+    color: var(--app-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--app-gold);
+}
+
+.app-table {
+    --bs-table-bg: transparent;
+}
+
+.app-table thead th {
+    color: var(--app-coral);
+    border-bottom-color: var(--app-border);
+    font-weight: 700;
+}
+
+.app-table tbody td {
+    border-bottom-color: var(--app-border);
+}
+
+.entry-excerpt {
+    max-width: 440px;
+}
+
+.empty-state {
+    background: rgba(255,255,255,0.42);
+    border: 1px dashed rgba(120, 80, 60, 0.22);
+    border-radius: 20px;
+}
+
+.empty-state-icon {
+    font-size: 2.4rem;
+    color: var(--app-gold);
+}
+
+.app-auth-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin-inline: auto;
+    display: grid;
+    place-items: center;
+    background: var(--app-gold-soft);
+    color: var(--app-gold);
+    font-size: 1.8rem;
+}
+
+.app-pagination .page-link {
+    border: 1px solid var(--app-border);
+    color: var(--app-gold);
+    background: rgba(255,255,255,0.65);
+}
+
+.app-pagination .page-item.active .page-link {
+    background: var(--app-gold-soft);
+    border-color: rgba(175, 123, 52, 0.35);
+    color: var(--app-gold);
+}
+
+@media (max-width: 991.98px) {
+    .app-main {
+        padding-top: calc(var(--app-header-height) + 1rem) !important;
+    }
+
+    .hero-card,
+    .app-card .card-body {
+        padding: 1.25rem !important;
+    }
+
+    .royal-card-body {
+        padding: 1.5rem 1.2rem 1.2rem 4.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    :root {
+        --app-header-height: 94px;
+        --app-footer-height: 76px;
+    }
+
+    .app-navbar .container,
+    .app-footer .container {
+        gap: 0.75rem;
+    }
+
+    .app-brand {
+        font-size: 0.95rem;
+    }
+
+    .royal-card-mark {
+        font-size: 5rem;
+    }
+
+    .royal-card-body {
+        padding-left: 3.8rem;
+    }
+
+    .app-table {
+        min-width: 860px;
+    }
+}
+
+
+.app-honeypot {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+}
+
+.turnstile-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 0.85rem;
+    background: rgba(255,255,255,0.42);
+    border: 1px solid var(--app-border);
+    border-radius: 18px;
+}
