@@ -25,4 +25,34 @@ final class Config
     {
         return BASE_PATH . '/' . ltrim($relativePath, '/');
     }
+
+    public static function envBool(string $key, bool $default = false): bool
+    {
+        $value = $_ENV[$key] ?? $_SERVER[$key] ?? null;
+
+        if ($value === null) {
+            return $default;
+        }
+
+        $value = strtolower(trim((string) $value));
+
+        return in_array($value, ['1', 'true', 'on', 'yes'], true);
+    }
+
+    public static function envInt(string $key, int $default = 0, ?int $min = null): int
+    {
+        $value = $_ENV[$key] ?? $_SERVER[$key] ?? null;
+
+        if ($value === null || trim((string) $value) === '') {
+            return $default;
+        }
+
+        $intValue = (int) $value;
+
+        if ($min !== null && $intValue < $min) {
+            return $min;
+        }
+
+        return $intValue;
+    }
 }

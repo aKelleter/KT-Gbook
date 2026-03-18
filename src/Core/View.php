@@ -49,9 +49,9 @@ final class View
     public static function statusBadgeClass(string $status): string
     {
         return match ($status) {
-            'approved' => 'text-bg-success',
-            'rejected' => 'text-bg-secondary',
-            default => 'text-bg-warning',
+            'approved' => 'badge-status-approved',
+            'rejected' => 'badge-status-rejected',
+            default    => 'badge-status-pending',
         };
     }
 }

@@ -1,9 +1,8 @@
 <?php use App\Core\View; ?>
+<?php use App\Config\Config; ?>
 
 
-
-<div class="mt-5"></div>
-<section class="hero-card shadow-soft mb-4 mb-lg-5 mt-5">
+<section class="hero-card shadow-soft mb-4 mb-lg-5">
     <div class="row g-4 align-items-center">
         <div class="col-lg-7">            
             <h1 class="hero-title text-center">Livre d'or du Choeur Royal Les Bengalis de Liège</h1>           
@@ -26,8 +25,20 @@
     </div>
 </section>
 
+<?php
+    $flashAutoHide = Config::envBool('FLASH_AUTOHIDE', true);
+    $flashAutoHideDelay = Config::envInt('FLASH_AUTOHIDE_DELAY_MS', 3000, 0);
+    $canAutoHide = $flashAutoHide && in_array($flash['type'] ?? '', ['success', 'info', 'warning'], true);
+?>
+
 <?php if (!empty($flash)): ?>
-    <div class="alert alert-<?= View::e($flash['type']) ?> shadow-sm mb-4 text-center" role="alert">
+    <div
+        class="alert text-center alert-<?= View::e($flash['type']) ?> shadow-sm app-flash"
+        role="alert"
+        data-flash-message="1"
+        data-autohide="<?= $canAutoHide ? 'true' : 'false' ?>"
+        data-delay="<?= $flashAutoHideDelay ?>"
+    >
         <?= View::e($flash['message']) ?>
     </div>
 <?php endif; ?>
@@ -108,8 +119,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="author_email" class="form-label app-label">Email <span class="app-muted">(optionnel)</span></label>
-                        <input type="email" class="form-control app-input" id="author_email" name="author_email" maxlength="190">
+                        <label for="author_email" class="form-label app-label">Email</label>
+                        <input type="email" class="form-control app-input" id="author_email" name="author_email" required maxlength="190">
                     </div>
 
                     <div class="mb-3">

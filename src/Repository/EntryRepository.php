@@ -192,6 +192,25 @@ final class EntryRepository
         $stmt->execute(['id' => $id]);
     }
 
+    public function update(int $id, array $data): void
+    {
+        $stmt = Database::connection()->prepare(
+            'UPDATE guestbook_entries
+             SET author_name  = :author_name,
+                 author_email = :author_email,
+                 city         = :city,
+                 message      = :message
+             WHERE id = :id'
+        );
+        $stmt->execute([
+            'author_name'  => $data['author_name'],
+            'author_email' => $data['author_email'],
+            'city'         => $data['city'],
+            'message'      => $data['message'],
+            'id'           => $id,
+        ]);
+    }
+
     public function delete(int $id): void
     {
         $stmt = Database::connection()->prepare('DELETE FROM guestbook_entries WHERE id = :id');

@@ -29,20 +29,19 @@ $turnstileEnabled = Config::bool('TURNSTILE_ENABLED', false);
         <div class="container">
             <a class="navbar-brand app-brand d-flex align-items-center gap-3" href="?action=guestbook">
                 <img src="<?= View::asset('img/favicon.svg') ?>" alt="Logo" class="app-logo">
-                <span>
-                    <small class="d-block app-brand-kicker">Chœur Royal</small>
+                <span>                   
                     <?= View::e((string) $appName) ?>
                 </span>
             </a>
 
             <div class="d-flex align-items-center gap-2 flex-wrap justify-content-end">
-                <a href="?action=guestbook" class="btn btn-outline-bengalis btn-sm">Livre d'or</a>
+                <a href="?action=guestbook" class="btn btn-outline-bengalis btn-sm" title="Livre d'or"><i class="bi bi-book-half"></i></a>
                 <?php if (Auth::check()): ?>
-                    <a href="?action=admin" class="btn btn-outline-bengalis btn-sm">Administration</a>
-                    <span class="small app-user-email"><?= View::e(Auth::user()['email'] ?? '') ?></span>
-                    <a href="?action=logout" class="btn btn-bengalis btn-sm">Déconnexion</a>
+                    <a href="?action=admin" class="btn btn-outline-bengalis btn-sm" title="Administration"><i class="bi bi-gear-fill"></i></a>
+                    <span class="small app-user-email" title="<?= View::e(Auth::user()['email'] ?? '') ?>"><i class="bi bi-person-fill"></i></span>
+                    <a href="?action=logout" class="btn btn-bengalis btn-sm" title="Déconnexion"><i class="bi bi-box-arrow-right"></i></a>
                 <?php else: ?>
-                    <a href="?action=login" class="btn btn-bengalis btn-sm">Connexion admin</a>
+                    <a href="?action=login" class="btn btn-bengalis btn-sm" title="Connexion"><i class="bi bi-box-arrow-in-right"></i></a>
                 <?php endif; ?>
             </div>
         </div>

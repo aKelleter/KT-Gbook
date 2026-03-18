@@ -17,6 +17,8 @@ $router->post('login_submit', [AuthController::class, 'loginSubmit'], true);
 $router->get('logout', [AuthController::class, 'logout']);
 
 $router->get('admin', [GuestbookController::class, 'adminDashboard']);
+$router->get('edit_entry', [GuestbookController::class, 'editForm']);
+$router->post('edit_entry', [GuestbookController::class, 'editSubmit']);
 $router->post('approve_entry', [GuestbookController::class, 'approve']);
 $router->post('reject_entry', [GuestbookController::class, 'reject']);
 $router->post('feature_entry', [GuestbookController::class, 'toggleFeatured']);

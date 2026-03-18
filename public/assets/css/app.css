@@ -18,29 +18,32 @@
 
 html,
 body {
-    height: 100%;
+    min-height: 100%;
     margin: 0;
-}
-
-body.app-body {
-    min-height: 100vh;
-    color: var(--app-text);
     background:
         radial-gradient(circle at top left, rgba(255,255,255,0.38), transparent 24%),
         radial-gradient(circle at bottom right, rgba(175,123,52,0.08), transparent 18%),
         var(--app-bg);
+}
+
+body.app-body {
+    min-height: 100dvh;
+    color: var(--app-text);
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .app-shell {
-    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
 }
 
 .app-main {
-    min-height: 100vh;
+    flex: 1 0 auto;
+    min-height: 0;
     box-sizing: border-box;
     padding-top: calc(var(--app-header-height) + 1.5rem) !important;
-    padding-bottom: calc(var(--app-footer-height) + 1.5rem) !important;
+    padding-bottom: 1.5rem !important;
 }
 
 .app-navbar-fixed {
@@ -83,8 +86,9 @@ body.app-body {
 }
 
 .app-footer {
-    position: fixed;
-    inset: auto 0 0 0;
+    position: static;
+    inset: auto;
+    margin-top: auto;
     min-height: var(--app-footer-height);
     display: flex;
     align-items: center;
@@ -233,6 +237,13 @@ body.app-body {
     top: calc(var(--app-header-height) + 1rem);
 }
 
+@media (min-width: 992px) {
+    .form-card > .card-body {
+        max-height: calc(100dvh - var(--app-header-height) - 2rem);
+        overflow-y: auto;
+    }
+}
+
 .guestbook-entry {
     padding: 1.15rem 1.15rem 1rem;
     border-radius: 18px;
@@ -340,6 +351,131 @@ body.app-body {
     }
 }
 
+.app-honeypot {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+}
+
+.turnstile-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 0.85rem;
+    background: rgba(255,255,255,0.42);
+    border: 1px solid var(--app-border);
+    border-radius: 18px;
+}
+
+/* ── Boutons d'action admin ───────────────────────────────────────────── */
+
+.btn-admin-approve {
+    background: rgba(74, 121, 89, 0.12);
+    color: #3d6b4e;
+    border: 1px solid rgba(74, 121, 89, 0.28);
+    border-radius: 999px;
+    font-weight: 600;
+}
+.btn-admin-approve:hover,
+.btn-admin-approve:focus {
+    background: rgba(74, 121, 89, 0.22);
+    color: #2c5039;
+    border-color: rgba(74, 121, 89, 0.48);
+}
+
+.btn-admin-reject {
+    background: rgba(122, 100, 89, 0.09);
+    color: var(--app-muted);
+    border: 1px solid rgba(122, 100, 89, 0.25);
+    border-radius: 999px;
+    font-weight: 600;
+}
+.btn-admin-reject:hover,
+.btn-admin-reject:focus {
+    background: rgba(122, 100, 89, 0.18);
+    color: #5a4740;
+    border-color: rgba(122, 100, 89, 0.42);
+}
+
+.btn-admin-feature {
+    background: var(--app-gold-soft);
+    color: var(--app-gold);
+    border: 1px solid rgba(175, 123, 52, 0.28);
+    border-radius: 999px;
+    font-weight: 600;
+}
+.btn-admin-feature:hover,
+.btn-admin-feature:focus {
+    background: rgba(175, 123, 52, 0.22);
+    color: #8d5f23;
+    border-color: rgba(175, 123, 52, 0.48);
+}
+
+.btn-admin-delete {
+    background: var(--app-coral-soft);
+    color: var(--app-coral);
+    border: 1px solid rgba(240, 74, 29, 0.24);
+    border-radius: 999px;
+    font-weight: 600;
+}
+.btn-admin-delete:hover,
+.btn-admin-delete:focus {
+    background: rgba(240, 74, 29, 0.2);
+    color: #c43812;
+    border-color: rgba(240, 74, 29, 0.44);
+}
+
+/* ── Badges de statut admin ───────────────────────────────────────────── */
+
+.badge-status-pending {
+    background: var(--app-gold-soft);
+    color: var(--app-gold);
+    border: 1px solid rgba(175, 123, 52, 0.3);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.badge-status-approved {
+    background: rgba(74, 121, 89, 0.12);
+    color: #3d6b4e;
+    border: 1px solid rgba(74, 121, 89, 0.3);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.badge-status-rejected {
+    background: rgba(122, 100, 89, 0.1);
+    color: var(--app-muted);
+    border: 1px solid rgba(122, 100, 89, 0.25);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* ── Mise en forme du message Flash et de sa disparition ─────────────── */
+.app-flash {
+    overflow: hidden;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        max-height 0.3s ease,
+        margin 0.3s ease,
+        padding 0.3s ease;
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.app-flash.is-hiding {
+    opacity: 0;
+    transform: translateY(-6px);
+    max-height: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 @media (max-width: 767.98px) {
     :root {
         --app-header-height: 94px;
@@ -366,22 +502,90 @@ body.app-body {
     .app-table {
         min-width: 860px;
     }
-}
 
+    html,
+    body,
+    .app-shell {
+        min-height: 100dvh;
+    }
 
-.app-honeypot {
-    position: absolute !important;
-    left: -9999px !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
-}
+    .app-navbar-fixed {
+        position: sticky;
+        top: 0;
+        inset: auto;
+    }
 
-.turnstile-wrap {
-    display: flex;
-    justify-content: center;
-    padding: 0.85rem;
-    background: rgba(255,255,255,0.42);
-    border: 1px solid var(--app-border);
-    border-radius: 18px;
+    .app-navbar {
+        min-height: auto;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .app-navbar .container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        row-gap: 0.75rem;
+    }
+
+    .app-brand {
+        min-width: 0;
+        flex: 1 1 100%;
+        white-space: normal;
+        line-height: 1.2;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .app-logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .app-main {
+        min-height: auto;
+        padding-top: 1rem !important;
+        padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    .app-footer {
+        position: static;
+        inset: auto;
+        min-height: var(--app-footer-height);
+        margin-top: 1rem;
+    }
+
+    .form-card {
+        position: static;
+        top: auto;
+        margin-bottom: 1rem;
+    }
+
+    .form-card,
+    .form-card .card-body {
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .form-submit-wrap {
+        position: static;
+        bottom: auto;
+        z-index: auto;
+        padding-top: 1rem;
+        padding-bottom: 0;
+        background: transparent;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-submit-wrap .btn-bengalis,
+    .form-card .btn-bengalis,
+    .form-card button[type="submit"] {
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
 }

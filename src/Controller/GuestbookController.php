@@ -95,6 +95,11 @@ final class GuestbookController
             Response::redirect('?action=guestbook#form');
         }
 
+        if ($authorEmail === '') {
+            Flash::set('danger', 'L’adresse email est obligatoire.');
+            Response::redirect('?action=guestbook#form');
+        }
+
         if ($message === '' || mb_strlen($message) < 10) {
             Flash::set('danger', 'Le message est trop court.');
             Response::redirect('?action=guestbook#form');
@@ -151,6 +156,71 @@ final class GuestbookController
             'totalEntries' => $totalEntries,
             'user' => Auth::user(),
         ]);
+    }
+
+    public function editForm(): void
+    {
+        $id = (int) ($_GET['id'] ?? 0);
+        $repo = new EntryRepository();
+        $entry = $repo->findById($id);
+
+        if (!$entry) {
+            Flash::set('danger', 'Message introuvable.');
+            Response::redirect('?action=admin');
+        }
+
+        View::render('guestbook/edit', [
+            'csrf'  => Csrf::token(),
+            'flash' => Flash::get(),
+            'entry' => $entry,
+        ]);
+    }
+
+    public function editSubmit(): void
+    {
+        if (!Csrf::validate($_POST['_csrf'] ?? null)) {
+            Flash::set('danger', 'Jeton CSRF invalide.');
+            Response::redirect('?action=admin');
+        }
+
+        $id = (int) ($_POST['id'] ?? 0);
+        $repo = new EntryRepository();
+        $entry = $repo->findById($id);
+
+        if (!$entry) {
+            Flash::set('danger', 'Message introuvable.');
+            Response::redirect('?action=admin');
+        }
+
+        $authorName  = trim((string) ($_POST['author_name'] ?? ''));
+        $authorEmail = trim((string) ($_POST['author_email'] ?? ''));
+        $city        = trim((string) ($_POST['city'] ?? ''));
+        $message     = trim((string) ($_POST['message'] ?? ''));
+
+        if ($authorName === '' || mb_strlen($authorName) < 2) {
+            Flash::set('danger', 'Le nom est obligatoire (min. 2 caractères).');
+            Response::redirect('?action=edit_entry&id=' . $id);
+        }
+
+        if ($message === '' || mb_strlen($message) < 10) {
+            Flash::set('danger', 'Le message est trop court (min. 10 caractères).');
+            Response::redirect('?action=edit_entry&id=' . $id);
+        }
+
+        if ($authorEmail !== '' && filter_var($authorEmail, FILTER_VALIDATE_EMAIL) === false) {
+            Flash::set('danger', 'L\'adresse email n\'est pas valide.');
+            Response::redirect('?action=edit_entry&id=' . $id);
+        }
+
+        $repo->update($id, [
+            'author_name'  => mb_substr($authorName, 0, 120),
+            'author_email' => $authorEmail !== '' ? mb_substr($authorEmail, 0, 190) : null,
+            'city'         => $city !== '' ? mb_substr($city, 0, 120) : null,
+            'message'      => mb_substr($message, 0, 3000),
+        ]);
+
+        Flash::set('success', 'Message modifié avec succès.');
+        Response::redirect('?action=admin');
     }
 
     public function approve(): void

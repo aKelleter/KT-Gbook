@@ -25,6 +25,15 @@ CREATE TABLE IF NOT EXISTS users (
 ');
 
 $pdo->exec('
+CREATE TABLE IF NOT EXISTS login_attempts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ip_hash TEXT NOT NULL,
+    attempted_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_login_attempts_ip ON login_attempts (ip_hash, attempted_at);
+');
+
+$pdo->exec('
 CREATE TABLE IF NOT EXISTS guestbook_entries (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     author_name TEXT NOT NULL,

@@ -1,10 +1,5 @@
 <?php use App\Core\View; ?>
-
-<?php if (!empty($flash)): ?>
-    <div class="alert alert-<?= View::e($flash['type']) ?> shadow-sm mb-4">
-        <?= View::e($flash['message']) ?>
-    </div>
-<?php endif; ?>
+<?php use App\Config\Config; ?>
 
 <div class="row g-4 mb-4">
     <div class="col-md-4">
@@ -32,6 +27,24 @@
         </div>
     </div>
 </div>
+
+<?php
+    $flashAutoHide = Config::envBool('FLASH_AUTOHIDE', true);
+    $flashAutoHideDelay = Config::envInt('FLASH_AUTOHIDE_DELAY_MS', 3000, 0);
+    $canAutoHide = $flashAutoHide && in_array($flash['type'] ?? '', ['success', 'info', 'warning'], true);
+?>
+
+<?php if (!empty($flash)): ?>
+    <div
+        class="alert text-center alert-<?= View::e($flash['type']) ?> shadow-sm app-flash"
+        role="alert"
+        data-flash-message="1"
+        data-autohide="<?= $canAutoHide ? 'true' : 'false' ?>"
+        data-delay="<?= $flashAutoHideDelay ?>"
+    >
+        <?= View::e($flash['message']) ?>
+    </div>
+<?php endif; ?>
 
 <div class="card app-card shadow-soft border-0">
     <div class="card-body p-4">
@@ -103,28 +116,30 @@
                             <td class="small"><?= View::e((string) $entry['created_at']) ?></td>
                             <td>
                                 <div class="d-flex flex-column flex-lg-row justify-content-end gap-2">
+                                    <a href="?action=edit_entry&id=<?= (int) $entry['id'] ?>" class="btn btn-sm btn-outline-bengalis" title="Modifier"><i class="bi bi-pencil me-1"></i>Éditer</a>
+
                                     <form method="post" action="?action=approve_entry">
                                         <input type="hidden" name="_csrf" value="<?= View::e($csrf) ?>">
                                         <input type="hidden" name="id" value="<?= (int) $entry['id'] ?>">
-                                        <button type="submit" class="btn btn-sm btn-success">Approuver</button>
+                                        <button type="submit" class="btn btn-sm btn-admin-approve"><i class="bi bi-check-lg me-1"></i>Approuver</button>
                                     </form>
 
                                     <form method="post" action="?action=reject_entry">
                                         <input type="hidden" name="_csrf" value="<?= View::e($csrf) ?>">
                                         <input type="hidden" name="id" value="<?= (int) $entry['id'] ?>">
-                                        <button type="submit" class="btn btn-sm btn-outline-secondary">Refuser</button>
+                                        <button type="submit" class="btn btn-sm btn-admin-reject"><i class="bi bi-x-lg me-1"></i>Refuser</button>
                                     </form>
 
                                     <form method="post" action="?action=feature_entry">
                                         <input type="hidden" name="_csrf" value="<?= View::e($csrf) ?>">
                                         <input type="hidden" name="id" value="<?= (int) $entry['id'] ?>">
-                                        <button type="submit" class="btn btn-sm btn-outline-warning">Mettre en avant</button>
+                                        <button type="submit" class="btn btn-sm btn-admin-feature"><i class="bi bi-star me-1"></i>Mettre en avant</button>
                                     </form>
 
                                     <form method="post" action="?action=delete_entry" class="js-confirm-delete">
                                         <input type="hidden" name="_csrf" value="<?= View::e($csrf) ?>">
                                         <input type="hidden" name="id" value="<?= (int) $entry['id'] ?>">
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">Supprimer</button>
+                                        <button type="submit" class="btn btn-sm btn-admin-delete"><i class="bi bi-trash me-1"></i>Supprimer</button>
                                     </form>
                                 </div>
                             </td>
