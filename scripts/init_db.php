@@ -58,7 +58,7 @@ if ($countUsers === 0) {
     ');
 
     $stmt->execute([
-        'email' => 'admin@bengalis.local',
+        'email' => 'admin@kt-gbook.local',
         'password_hash' => password_hash('admin1234', PASSWORD_DEFAULT),
         'role' => 'admin',
         'created_at' => date('Y-m-d H:i:s'),
@@ -111,4 +111,4 @@ if ($countEntries === 0) {
 }
 
 echo "Base initialisée.\n";
-echo "Compte admin : admin@bengalis.local / admin1234\n";
+echo "Compte admin : admin@kt-gbook.local / admin1234\n";

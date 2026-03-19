@@ -199,7 +199,7 @@ body.app-body {
     color: var(--app-gold);
     border: 1px solid rgba(175, 123, 52, 0.32);
     border-radius: 999px;
-    padding: 0.72rem 1.1rem;
+    padding: 0.25rem 1.1rem;
     font-weight: 700;
 }
 

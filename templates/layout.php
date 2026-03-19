@@ -4,8 +4,8 @@ use App\Config\Config;
 use App\Core\Auth;
 use App\Core\View;
 
-$appName = Config::get('APP_NAME', "Livre d'Or - Les Bengalis de Liège");
-$appVersion = Config::get('APP_VERSION', '0.1.0');
+$appName = Config::get('APP_NAME', "Livre d'Or - KT-Gbook");
+$appVersion = Config::get('APP_VERSION', '1.0.0');
 $appUpd = Config::get('APP_UPD', '00000000-0000');
 $turnstileEnabled = Config::bool('TURNSTILE_ENABLED', false);
 ?>

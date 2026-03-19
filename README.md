@@ -1,6 +1,6 @@
-# Livre d'Or – Choeur Royal Les Bengalis de Liège
+# Livre d'Or – KT-Gbook
 
-Application web de livre d'or développée en PHP natif pour le **Choeur Royal Les Bengalis de Liège**. Elle permet aux visiteurs de déposer un message après un concert, avec un workflow de modération complet côté administration.
+Application web de livre d'or développée en PHP natif. Elle permet aux visiteurs de déposer un message, avec un workflow de modération complet côté administration.
 
 ---
 
@@ -68,7 +68,7 @@ Toute la configuration se fait dans `.env` :
 
 ```ini
 # Application
-APP_NAME="Livre d'Or - Les Bengalis de Liège"
+APP_NAME="Livre d'Or - KT-Gbook"
 APP_ENV=production
 APP_DEBUG=false
 APP_URL=https://votre-domaine.be/
@@ -93,6 +93,9 @@ LOGIN_RATE_LIMIT_MAX_ATTEMPTS=5
 TURNSTILE_ENABLED=false
 TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
+# Uniquement pour le développement local si APP_ENV=dev 
+# Mettre sur true dans tous les autres cas
+TURNSTILE_VERIFY_SSL=true
 ```
 
 ---
