@@ -79,6 +79,27 @@
                     </div>
                 </form>
 
+                <?php if (($entry['status'] ?? '') !== 'rejected'): ?>
+                <div class="border-top mt-4 pt-4">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                        <div class="small app-muted">
+                            Statut actuel :
+                            <span class="badge <?= View::statusBadgeClass((string) ($entry['status'] ?? '')) ?> ms-1">
+                                <?= View::e((string) ($entry['status'] ?? '')) ?>
+                            </span>
+                        </div>
+                        <form method="post" action="?action=reject_entry">
+                            <input type="hidden" name="_csrf" value="<?= View::e($csrf) ?>">
+                            <input type="hidden" name="id" value="<?= (int) $entry['id'] ?>">
+                            <button type="submit" class="btn btn-admin-reject btn-sm">
+                                <i class="bi bi-x-circle me-1"></i>Désapprouver
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+
             </div>
         </div>
     </div>

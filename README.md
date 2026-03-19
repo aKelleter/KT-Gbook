@@ -69,6 +69,7 @@ Toute la configuration se fait dans `.env` :
 ```ini
 # Application
 APP_NAME="Livre d'Or - KT-Gbook"
+APP_INTRO="Votre message d'introduction"
 APP_ENV=production
 APP_DEBUG=false
 APP_URL=https://votre-domaine.be/
