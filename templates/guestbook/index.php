@@ -124,7 +124,7 @@
                 <?php endif; ?>
 
                 <p class="app-muted mb-1">Votre message sera validé avant publication.</p>
-                <p class="small app-muted mb-4">Protection anti-spam : champ piège, délai minimum, limitation d'envois et captcha optionnel.</p>
+                <p class="small app-muted mb-4">Ce formulaire est protégé contre le spam.</p>
 
                 <form method="post" action="?action=submit_entry">
                     <input type="hidden" name="_csrf" value="<?= View::e($csrf) ?>">
