@@ -70,6 +70,7 @@ Toute la configuration se fait dans `.env` :
 ```ini
 # Application
 APP_NAME="Livre d'Or - KT-Gbook"
+APP_LOGO=img/favicon.svg
 APP_INTRO="Votre message d'introduction"
 APP_ENV=production
 APP_DEBUG=false

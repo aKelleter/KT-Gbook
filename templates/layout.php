@@ -5,6 +5,7 @@ use App\Core\Auth;
 use App\Core\View;
 
 $appName = Config::get('APP_NAME', "Livre d'Or - KT-Gbook");
+$appLogo = Config::get('APP_LOGO', 'img/favicon.svg');
 $appVersion = Config::get('APP_VERSION', '1.0.0');
 $appUpd = Config::get('APP_UPD', '00000000-0000');
 $turnstileEnabled = Config::bool('TURNSTILE_ENABLED', false);
@@ -15,7 +16,7 @@ $turnstileEnabled = Config::bool('TURNSTILE_ENABLED', false);
     <meta charset="UTF-8">
     <title><?= View::e((string) $appName) ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="<?= View::asset('img/favicon.svg') ?>" type="image/svg+xml">
+    <link rel="icon" href="<?= View::asset(View::e((string) $appLogo)) ?>" type="image/svg+xml">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="<?= View::asset('css/app.css') ?>">
@@ -28,7 +29,7 @@ $turnstileEnabled = Config::bool('TURNSTILE_ENABLED', false);
     <nav class="navbar navbar-expand-lg app-navbar app-navbar-fixed">
         <div class="container">
             <a class="navbar-brand app-brand d-flex align-items-center gap-3" href="?action=guestbook">
-                <img src="<?= View::asset('img/favicon.svg') ?>" alt="Logo" class="app-logo">
+                <img src="<?= View::asset(View::e((string) $appLogo)) ?>" alt="Logo" class="app-logo">
                 <span>                   
                     <?= View::e((string) $appName) ?>
                 </span>

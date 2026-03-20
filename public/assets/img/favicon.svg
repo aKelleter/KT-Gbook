@@ -1,5 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Bengalis">
-  <rect width="128" height="128" rx="28" fill="#f7ede6"/>
-  <path d="M26 94V34h28c18 0 29 8 29 21 0 8-5 14-12 17 11 3 18 10 18 21 0 15-13 24-33 24H26zm17-36h10c9 0 14-4 14-11 0-7-5-10-14-10H43v21zm0 23h13c11 0 17-4 17-12 0-8-6-12-17-12H43v24z" fill="#af7b34"/>
-  <path d="M82 28c8 3 13 7 17 14" fill="none" stroke="#f04a1d" stroke-width="4" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">Monogramme B inspiré du logo des Bengalis</title>
+  <desc id="desc">Lettre B royale stylisée avec couronne et dégradé doré, sur fond transparent.</desc>
+  <defs>
+    <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8c6424"/>
+      <stop offset="18%" stop-color="#c49345"/>
+      <stop offset="38%" stop-color="#f0d27d"/>
+      <stop offset="58%" stop-color="#af7b34"/>
+      <stop offset="78%" stop-color="#d3a65d"/>
+      <stop offset="100%" stop-color="#8b6121"/>
+    </linearGradient>
+    <linearGradient id="goldFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d8b06b"/>
+      <stop offset="50%" stop-color="#b78339"/>
+      <stop offset="100%" stop-color="#8f6527"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#5a3e14" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Crown -->
+    <g stroke="url(#goldStroke)" stroke-width="9">
+      <path d="M238 108 C222 89 219 68 232 48"/>
+      <path d="M280 94 C267 69 266 42 286 18"/>
+      <path d="M345 87 C336 57 339 26 350 8 C361 26 364 57 355 87"/>
+      <path d="M420 94 C433 69 434 42 414 18"/>
+      <path d="M462 108 C478 89 481 68 468 48"/>
+      <path d="M228 120 C285 97 418 97 474 120"/>
+    </g>
+
+    <!-- Main B sweep -->
+    <g stroke="url(#goldStroke)">
+      <path d="M354 150
+               C 440 150, 518 142, 558 184
+               C 600 227, 593 305, 520 342
+               C 478 364, 429 371, 388 370
+               C 458 373, 537 387, 587 456
+               C 634 521, 627 629, 556 699
+               C 498 757, 402 796, 278 804
+               C 212 808, 159 777, 146 730
+               C 178 767, 243 780, 317 758
+               C 413 729, 493 682, 530 612
+               C 565 546, 557 468, 514 427
+               C 466 381, 381 384, 339 386
+               L 339 351
+               C 379 351, 451 346, 499 312
+               C 549 277, 553 218, 519 186
+               C 489 158, 432 158, 356 158" stroke-width="19"/>
+      <path d="M210 206
+               C 180 240, 175 289, 201 329
+               C 228 370, 283 389, 338 386" stroke-width="6.5" opacity="0.8"/>
+      <path d="M205 545
+               C 156 601, 141 680, 168 741" stroke-width="6.5" opacity="0.8"/>
+    </g>
+
+    <!-- Vertical stems -->
+    <g stroke="url(#goldFill)">
+      <path d="M273 170 L273 704" stroke-width="10"/>
+      <path d="M300 170 L300 704" stroke-width="5" opacity="0.95"/>
+      <path d="M318 170 L318 704" stroke-width="5" opacity="0.72"/>
+    </g>
+  </g>
 </svg>
