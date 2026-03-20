@@ -104,7 +104,7 @@ TURNSTILE_VERIFY_SSL=true
 ## Compte admin par défaut
 
 ```
-Email    : admin@bengalis.local
+Email    : admin@kt-gbook.local
 Mot de passe : admin1234
 ```
 
