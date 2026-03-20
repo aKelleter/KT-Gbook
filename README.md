@@ -24,6 +24,7 @@ Application web de livre d'or développée en PHP natif. Elle permet aux visiteu
 - Formulaire de dépôt avec email et ville optionnels
 - Message soumis à modération avant publication
 - Protection anti-spam multicouche (voir [Sécurité](#sécurité))
+- Affichage de messages flash pour retours d'action
 
 ### Administration
 - Authentification par session avec protection CSRF
